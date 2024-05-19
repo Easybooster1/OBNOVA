@@ -17,7 +17,7 @@ class App:
     def __init__(self, master):
         self.window = master
         self.window.title("Escoria")
-        self.version = "2.1"
+        self.version = "2.2"
 
         self.input_label = tk.Label(self.window, text="Введите текст:")
         self.input_label.pack()
@@ -37,10 +37,10 @@ class App:
         self.output_text = tk.Text(self.window, height=5, width=30)
         self.output_text.pack()
 
-        self.copy_button = tk.Button(self.window, text="Скопировать", command=self.copy_to_clipboard, bg="red")  # Красная кнопка
+        self.copy_button = tk.Button(self.window, text="Скопировать", command=self.copy_to_clipboard, bg="grey")  
         self.copy_button.pack()
 
-        self.about_button = tk.Button(self.window, text="О программе", command=self.show_about, bg="green")  # Зеленая кнопка
+        self.about_button = tk.Button(self.window, text="О программе", command=self.show_about, bg="white")  
         self.about_button.pack()
 
         self.create_menu()
