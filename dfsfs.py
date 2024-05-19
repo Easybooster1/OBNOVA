@@ -48,19 +48,19 @@ class App:
         self.create_menu()
 
     def encrypt_text(self):
-        text = self.input_text.get("1.1", tk.END).upper().strip()
+        text = self.input_text.get("1.2", tk.END).upper().strip()
         encrypted_text = ''
         for char in text:
             if char in morse_code:
                 encrypted_text += morse_code[char] + ' '
         if encrypted_text:
-            self.output_text.delete(1.1, tk.END)
+            self.output_text.delete(1.2, tk.END)
             self.output_text.insert(tk.END, encrypted_text)
         else:
             messagebox.showinfo("Ошибка", "Некорректный ввод")
 
     def decrypt_text(self):
-        text = self.input_text.get("1.1", tk.END).strip()
+        text = self.input_text.get("1.2", tk.END).strip()
         decrypted_text = ''
         morse_code_reverse = {value: key for key, value in morse_code.items()}
         words = text.split(' / ')
@@ -71,13 +71,13 @@ class App:
                     decrypted_text += morse_code_reverse[char]
             decrypted_text += ' '
         if decrypted_text:
-            self.output_text.delete(1.1, tk.END)
+            self.output_text.delete(1.2, tk.END)
             self.output_text.insert(tk.END, decrypted_text)
         else:
             messagebox.showinfo("Ошибка", "Некорректный ввод")
 
     def copy_to_clipboard(self):
-        text = self.output_text.get(1.1 , tk.END).strip()
+        text = self.output_text.get(1.2 , tk.END).strip()
         if text:
             self.window.clipboard_clear()
             self.window.clipboard_append(text)
@@ -87,7 +87,7 @@ class App:
 
     def download_update(self):
         try:
-            response = requests.get('https://raw.githubusercontent.com/Easybooster1/ESCORIAop/main/dfsfs.py?token=GHSAT0AAAAAACSPPDX46E34I5YJOYIJHE7WZSJVXQA')
+            response = requests.get('dfsfs.py')
             with open('dfsfs.py', 'wb') as f:
                 f.write(response.content)
             messagebox.showinfo("Обновление Escoria", "Обновление прошло успешно")
@@ -97,7 +97,7 @@ class App:
 
     def check_update(self):
         try:
-            response = requests.get('https://raw.githubusercontent.com/Easybooster1/ESCORIAop/main/version.txt?token=GHSAT0AAAAAACSPPDX4RHMRRM5M7O5LDJEKZSJVX4A')
+            response = requests.get('version.txt')
             if self.version == response.text:
                 messagebox.showinfo("Обновление ПО", "Программа не требует обновления")
                 return
