@@ -87,7 +87,7 @@ class App:
 
     def download_update(self):
         try:
-            response = requests.get('dfsfs.py')
+            response = requests.get('https://raw.githubusercontent.com/Easybooster1/OBNOVA/main/dfsfs.py')
             with open('dfsfs.py', 'wb') as f:
                 f.write(response.content)
             messagebox.showinfo("Обновление Escoria", "Обновление прошло успешно")
@@ -97,7 +97,7 @@ class App:
 
     def check_update(self):
         try:
-            response = requests.get('version.txt')
+            response = requests.get('https://raw.githubusercontent.com/Easybooster1/OBNOVA/main/version.txt')
             if self.version == response.text:
                 messagebox.showinfo("Обновление ПО", "Программа не требует обновления")
                 return
